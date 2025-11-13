@@ -6,7 +6,7 @@ const {
 const fs=require("node:fs")
 
 const ai = new GoogleGenAI({
-      apiKey: "AIzaSyAvAqUnqkoQzVc_XYz9Dxt8KGrW9G2gA-4"
+      apiKey: "AIzaSyDPuz95P3HK5ym3MQXcWEbb24MGfwDA8jc"
 
 });
 

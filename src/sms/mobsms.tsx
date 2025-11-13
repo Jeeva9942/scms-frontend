@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import { Bell, Power } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import twilio from "twilio";
-
-// Always load credentials securely from environment variables
-
 
 export default function Mobsms() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,23 +16,7 @@ export default function Mobsms() {
   };
 
 
- /* if (isEnabled) {
-    const accountSid = 'AC71d22376b5666a6090b3b584c26efb46';
-    const authToken = '329de4ed471a93a5ab4a258908002b71';
-
-
-const client = twilio(accountSid, authToken);
-
-client.messages
-  .create({
-    body: "Your soil moisture levels are low. Please water your plants.",
-    from: "+18578470441",
-    to: "+919003899180",
-  })
-  .then((message) => console.log("Message sent! SID:", message.sid))
-  .catch((err) => console.error("Error sending SMS:", err));
-
-  }*/
+  /* Hook up your backend SMS endpoint here with fetch when notifications are enabled */
 
   return (
     <div className="fixed  top-40 right-10 z-[9999] flex flex-col items-end font-poppins">

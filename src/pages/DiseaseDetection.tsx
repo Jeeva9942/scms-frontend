@@ -39,9 +39,16 @@ const DiseaseDetection = () => {
       setAnalyzing(true);
       console.log("📸 Selected file:", file.name);
 
+      const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+      if (!apiKey) {
+        throw new Error(
+          "Gemini API key is not configured. Set VITE_GEMINI_API_KEY in your environment."
+        );
+      }
+
       // Initialize Gemini
       const ai = new GoogleGenAI({
-        apiKey: "AIzaSyAvAqUnqkoQzVc_XYz9Dxt8KGrW9G2gA-4",
+        apiKey,
       });
 
       // ✅ Upload image
