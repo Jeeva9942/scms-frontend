@@ -100,7 +100,7 @@ export const translations = {
     farmName: "Farm Name",
     farmLocation: "Location",
     farmSize: "Farm Size",
-    soilType: "Soil Type",
+  
     cropsGrown: "Crops Grown",
     ownerName: "Owner",
     contactInfo: "Contact",
@@ -298,7 +298,7 @@ export const translations = {
     farmName: "பண்ணை பெயர்",
     farmLocation: "இடம்",
     farmSize: "பண்ணை அளவு",
-    soilType: "மண் வகை",
+   
     cropsGrown: "வளர்க்கப்படும் பயிர்கள்",
     ownerName: "உரிமையாளர்",
     contactInfo: "தொடர்பு",
@@ -493,7 +493,7 @@ export const translations = {
     farmName: "ഫാം പേര്",
     farmLocation: "സ്ഥലം",
     farmSize: "ഫാം വലുപ്പം",
-    soilType: "മണ്ണിന്റെ തരം",
+  
     cropsGrown: "വിളകൾ വളർത്തുന്നു",
     ownerName: "ഉടമ",
     contactInfo: "ബന്ധപ്പെടുക",
