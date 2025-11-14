@@ -22,7 +22,6 @@ import {
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Language } from "@/lib/translations";
 import { Link, useLocation } from "react-router-dom";
-import Mobsms from "@/sms/mobsms.tsx";
 
 export default function Navbar() {
   const { language, setLanguage, t } = useLanguage();
@@ -71,18 +70,17 @@ export default function Navbar() {
       <div className="w-full h-full">
         <div className="flex items-center justify-between h-20">
           {/* Brand */}
-          <div className="flex items-center gap-2 sm:gap-3 flex-none pl-4">
+          <div className="flex items-center gap-2 sm:gap-3 flex-none pl-4 min-w-0">
             <div className="w-10 h-10 sm:w-11 sm:h-11 bg-accent rounded-xl flex items-center justify-center shadow-lg transition-transform">
               <Leaf className="w-5 h-5 sm:w-6 sm:h-6 text-foreground" />
             </div>
-            <h1 className="text-[20px] md:text-[22px] font-bold text-white">
+            <h1 className="text-[20px] md:text-[22px] font-bold text-white max-w-[50vw] sm:max-w-[60vw] md:max-w-[320px] truncate">
               {t.appName}
             </h1>
           </div>
             
           {/* Center Navigation */}
           <div className="flex-1 min-w-0">
-            <Mobsms />
             <nav className="hidden lg:flex items-center justify-center gap-3 text-sm leading-none whitespace-nowrap">
               {navLinks.map((link) => {
                 const isActive = location.pathname === link.path;
@@ -161,7 +159,7 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <nav className="lg:hidden py-4 animate-fade-in">
+          <nav className="lg:hidden py-3 bg-green-600/95 text-white backdrop-blur-md border-t border-white/20 shadow-lg animate-fade-in">
             <div className="space-y-1">
               {navLinks.map((link, index) => {
                 const isActive = location.pathname === link.path;
@@ -170,15 +168,15 @@ export default function Navbar() {
                     key={link.key}
                     to={link.path}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`flex items-center gap-3 py-3 px-4 rounded-lg font-medium transition-colors ${navItemClass} ${
+                    className={`group flex items-center gap-3 py-3 px-4 rounded-lg font-medium transition-colors ${navItemClass} ${
                       isActive
-                        ? "bg-white/20 text-white"
-                        : "text-white/80 hover:text-white hover:bg-white/10"
+                        ? "bg-white/15 text-white"
+                        : "text-white/90 hover:text-white hover:bg-white/10"
                     }`}
                     style={{ animationDelay: `${index * 50}ms` }}
                   >
                     <link.icon className="w-5 h-5 shrink-0" />
-                    <span>{link.label}</span>
+                    <span className="truncate">{link.label}</span>
                     <ArrowRight className="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   </Link>
                 );

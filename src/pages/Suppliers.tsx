@@ -522,14 +522,16 @@ const Suppliers = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="flex-1"
               />
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 <Button
+                  size="sm"
                   variant={selectedType === null ? "default" : "outline"}
                   onClick={() => setSelectedType(null)}
                 >
                   {t.all}
                 </Button>
                 <Button
+                  size="sm"
                   variant={selectedType === "Seeds" ? "default" : "outline"}
                   onClick={() => setSelectedType("Seeds")}
                   className={selectedType === "Seeds" ? "bg-growth" : ""}
@@ -538,6 +540,7 @@ const Suppliers = () => {
                   {t.seeds}
                 </Button>
                 <Button
+                  size="sm"
                   variant={selectedType === "Fertilizers" ? "default" : "outline"}
                   onClick={() => setSelectedType("Fertilizers")}
                   className={selectedType === "Fertilizers" ? "bg-harvest" : ""}
@@ -546,6 +549,7 @@ const Suppliers = () => {
                   {t.fertilizers}
                 </Button>
                 <Button
+                  size="sm"
                   variant={selectedType === "Equipment" ? "default" : "outline"}
                   onClick={() => setSelectedType("Equipment")}
                   className={selectedType === "Equipment" ? "bg-primary" : ""}

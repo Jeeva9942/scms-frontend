@@ -15,8 +15,14 @@ const styles = `
 
   .dashboard {
     min-height: 100vh;
-    background: linear-gradient(to bottom, #f8fafc, #f1f5f9);
-    padding: 2rem 1rem;
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%);
+    padding: 1.5rem 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .dashboard {
+      padding: 2.5rem 2rem;
+    }
   }
 
   /* Top Stats Dashboard */
@@ -29,48 +35,88 @@ const styles = `
     margin: 0 auto 2.5rem auto;
   }
   .stat-card {
-    background: white;
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
     border-radius: 1rem;
-    padding: 1.25rem 1.5rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    min-width: 160px;
+    padding: 1rem 1.25rem;
+    box-shadow: var(--shadow-soft);
+    min-width: 140px;
     text-align: center;
-    transition: transform 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .stat-card:hover {
     transform: translateY(-4px);
+    box-shadow: var(--shadow-medium);
+  }
+  
+  @media (min-width: 640px) {
+    .stat-card {
+      min-width: 160px;
+      padding: 1.25rem 1.5rem;
+    }
   }
   .stat-label {
-    font-size: 0.875rem;
-    color: #64748b;
+    font-size: 0.75rem;
+    color: hsl(var(--muted-foreground));
     font-weight: 500;
   }
   .stat-value {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    color: #16a34a;
+    color: hsl(var(--primary));
     margin-top: 0.25rem;
+  }
+  
+  @media (min-width: 640px) {
+    .stat-label {
+      font-size: 0.875rem;
+    }
+    .stat-value {
+      font-size: 1.5rem;
+    }
   }
 
   /* Field Grid */
   .grid {
     display: grid;
-    gap: 1.75rem;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+    grid-template-columns: 1fr;
     max-width: 1200px;
     margin: 0 auto;
+  }
+  
+  @media (min-width: 640px) {
+    .grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.75rem;
+    }
   }
 
   .card {
     position: relative;
-    border-radius: 1.5rem;
+    border-radius: 1.25rem;
     overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    box-shadow: var(--shadow-medium);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
+    border: 1px solid hsl(var(--border) / 0.3);
   }
   .card:hover {
     transform: translateY(-6px);
+    box-shadow: var(--shadow-strong);
+  }
+  
+  @media (min-width: 768px) {
+    .card {
+      border-radius: 1.5rem;
+    }
   }
 
   .bg-img {
@@ -83,12 +129,26 @@ const styles = `
 
   .overlay {
     position: relative;
-    padding: 1.5rem;
+    padding: 1.25rem;
     color: white;
-    min-height: 300px;
+    min-height: 280px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+  }
+  
+  @media (min-width: 640px) {
+    .overlay {
+      padding: 1.5rem;
+      min-height: 300px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .overlay {
+      padding: 1.75rem;
+      min-height: 320px;
+    }
   }
 
   .header-row {
@@ -98,36 +158,64 @@ const styles = `
   }
 
   .field-name {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  }
+  
+  @media (min-width: 640px) {
+    .field-name {
+      font-size: 1.75rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .field-name {
+      font-size: 2rem;
+    }
   }
 
   .crop-name {
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 600;
     text-align: center;
     margin: 0.5rem 0;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.5);
     padding: 0.4rem 1rem;
     border-radius: 2rem;
     display: inline-block;
     align-self: center;
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  
+  @media (min-width: 640px) {
+    .crop-name {
+      font-size: 1.125rem;
+    }
   }
 
   .status-badge {
     display: flex;
     align-items: center;
     gap: 0.35rem;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     font-weight: 600;
-    padding: 0.35rem 0.75rem;
+    padding: 0.3rem 0.65rem;
     border-radius: 1.5rem;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.2);
   }
-  .status-green { background: #16a34a; }
-  .status-yellow { background: #ca8a04; }
-  .status-red { background: #dc2626; }
+  .status-green { background: hsl(var(--primary)); }
+  .status-yellow { background: hsl(var(--secondary)); }
+  .status-red { background: hsl(var(--destructive)); }
+  
+  @media (min-width: 640px) {
+    .status-badge {
+      font-size: 0.875rem;
+      padding: 0.35rem 0.75rem;
+    }
+  }
 
   .moisture {
     display: flex;
@@ -182,38 +270,53 @@ const styles = `
 
   .buttons {
     display: flex;
-    gap: 0.75rem;
+    flex-direction: column;
+    gap: 0.5rem;
     margin-top: 1rem;
   }
 
   .btn {
     flex: 1;
-    padding: 0.65rem;
+    padding: 0.6rem;
     border-radius: 0.75rem;
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     font-weight: 600;
     text-align: center;
-    transition: background 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
   }
   .btn-secondary {
     background: rgba(255,255,255,0.25);
-    border: 1px solid rgba(255,255,255,0.35);
+    border: 1px solid rgba(255,255,255,0.4);
     color: white;
+    backdrop-filter: blur(4px);
   }
   .btn-secondary:hover {
     background: rgba(255,255,255,0.35);
+    transform: translateY(-2px);
   }
   .btn-primary {
-    background: #16a34a;
+    background: hsl(var(--primary));
     color: white;
+    box-shadow: 0 4px 12px hsla(var(--primary), 0.4);
   }
   .btn-primary:hover {
-    background: #15803d;
+    background: hsl(var(--primary) / 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px hsla(var(--primary), 0.5);
+  }
+  
+  @media (min-width: 640px) {
+    .buttons {
+      flex-direction: row;
+      gap: 0.75rem;
+    }
+    .btn {
+      padding: 0.65rem;
+      font-size: 0.875rem;
+    }
   }
 
-  @media (min-width: 768px) {
-    .grid { grid-template-columns: repeat(2, 1fr); }
-  }
 `;
 
 // ── Field Data ────────────────────────────────────────────────────────

@@ -104,7 +104,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + i * 0.1, duration: 0.5 }}
-                  className="inline-block mr-4"
+                  className="inline-block mr-4 last:mr-0"
                 >
                   {word}
                 </motion.span>

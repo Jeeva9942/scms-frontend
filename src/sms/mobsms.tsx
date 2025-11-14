@@ -19,7 +19,7 @@ export default function Mobsms() {
   /* Hook up your backend SMS endpoint here with fetch when notifications are enabled */
 
   return (
-    <div className="fixed  top-40 right-10 z-[9999] flex flex-col items-end font-poppins">
+    <div className="fixed bottom-40 md:bottom-32 lg:bottom-36 right-4 md:right-6 z-[9999] flex flex-col items-end font-poppins">
       {/* Floating Notification Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}

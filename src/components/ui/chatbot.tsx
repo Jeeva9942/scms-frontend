@@ -35,7 +35,7 @@ const Chatbot = () => {
   }
 };
 return(
- <div className="fixed bottom-6 right-10 z-50">
+  <div className="fixed bottom-6 right-4 md:bottom-6 md:right-6 lg:right-10 z-50">
       {/* Floating Chat Button */}
       {!open && (
         <button
@@ -61,7 +61,7 @@ return(
 
       {/* Chat Panel */}
       {open && (
-        <div className="w-[400px] max-w-[90vw] h-80 bg-white rounded-2xl shadow-2xl mt-4 overflow-hidden flex flex-col ring-1 ring-gray-200 animate-[slideUp_0.2s_ease-out]">
+        <div className="w-[92vw] sm:w-[380px] md:w-[420px] h-[70vh] sm:h-[26rem] bg-white rounded-2xl shadow-2xl mt-4 overflow-hidden flex flex-col ring-1 ring-gray-200 animate-[slideUp_0.2s_ease-out]">
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
             <div className="flex items-center gap-3">
