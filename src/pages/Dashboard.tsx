@@ -9,6 +9,10 @@ import  Mantoauto  from "@/pages/mantoauto.tsx";
 import Mobsms from "@/sms/mobsms.tsx";
 import { Button } from "@/components/ui/button";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
+import sensorImg1 from "@/assets/wheat.jpg";
+import sensorImg2 from "@/assets/greengram.jpg";
+import sensorImg3 from "@/assets/coriander.jpg";
+import sensorImg4 from "@/assets/rice.jpg";
 
 
 const sensorData = [
@@ -260,19 +264,31 @@ const Dashboard = () => {
               <CardDescription className="text-sm">
                 {forecast?.city?.name ? `${forecast.city.name} • ${forecast.city.country ?? ""}` : "Local conditions"}
               </CardDescription>
-              <div className="mt-3 flex flex-wrap items-center gap-3">
-                <div className="flex gap-2">
-                  <Button variant={selectedMetric === "temperature" ? "default" : "outline"} size="sm" onClick={() => { setSelectedMetric("temperature"); if (!days) setDays(1); }}>
-                    Temperature
-                  </Button>
-                  <Button variant={selectedMetric === "weather" ? "default" : "outline"} size="sm" onClick={() => { setSelectedMetric("weather"); if (!days) setDays(1); }}>
-                    Weather
-                  </Button>
-                  <Button variant={selectedMetric === "humidity" ? "default" : "outline"} size="sm" onClick={() => { setSelectedMetric("humidity"); if (!days) setDays(1); }}>
-                    Humidity
-                  </Button>
+              <div className="mt-3 flex flex-col gap-4">
+                <div className="flex gap-3 overflow-x-auto pb-1">
+                  <button onClick={() => { setSelectedMetric("temperature"); if (!days) setDays(1); }} className={`min-w-[220px] rounded-xl p-4 border transition ${selectedMetric === "temperature" ? "bg-primary/10 border-primary" : "bg-card"}`}>
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center animate-pulse"><Thermometer className="w-6 h-6 text-primary" /></div>
+                      <div className="font-semibold">Temperature</div>
+                    </div>
+                    <div className="mt-2 text-sm text-muted-foreground">Tap to view forecast</div>
+                  </button>
+                  <button onClick={() => { setSelectedMetric("weather"); if (!days) setDays(1); }} className={`min-w-[220px] rounded-xl p-4 border transition ${selectedMetric === "weather" ? "bg-primary/10 border-primary" : "bg-card"}`}>
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-blue-500/15 flex items-center justify-center animate-bounce"><Sun className="w-6 h-6 text-yellow-500" /></div>
+                      <div className="font-semibold">Conditions</div>
+                    </div>
+                    <div className="mt-2 text-sm text-muted-foreground">Sunny, rainy, cloudy</div>
+                  </button>
+                  <button onClick={() => { setSelectedMetric("humidity"); if (!days) setDays(1); }} className={`min-w-[220px] rounded-xl p-4 border transition ${selectedMetric === "humidity" ? "bg-primary/10 border-primary" : "bg-card"}`}>
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-cyan-500/15 flex items-center justify-center animate-pulse"><Droplets className="w-6 h-6 text-cyan-600" /></div>
+                      <div className="font-semibold">Humidity</div>
+                    </div>
+                    <div className="mt-2 text-sm text-muted-foreground">Tap to view forecast</div>
+                  </button>
                 </div>
-                <div className="w-[140px]">
+                <div className="w-[160px]">
                   <Select onValueChange={(v) => setDays(parseInt(v))} value={days ? String(days) : undefined}>
                     <SelectTrigger>
                       <SelectValue placeholder="Days" />
@@ -347,7 +363,59 @@ const Dashboard = () => {
           <FieldDashboard />
         </div>
 
-       
+        <div className="mt-10">
+          <Card className="border-0 shadow-medium">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-lg">Soil Sensor Map</CardTitle>
+              <CardDescription className="text-sm">Interactive view of irrigated and non‑irrigated fields</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 max-w-3xl">
+                <div className="rounded-xl overflow-hidden border shadow-soft">
+                  <div className="h-28 sm:h-32 bg-cover bg-center" style={{ backgroundImage: `url(${sensorImg1})` }}>
+                    <div className="h-full w-full bg-blue-400/40 ring-1 ring-blue-500/50 flex items-center justify-center">
+                      <div className="text-sm font-semibold">SENSOR - 1</div>
+                    </div>
+                  </div>
+                </div>
+                <div className="rounded-xl overflow-hidden border shadow-soft">
+                  <div className="h-28 sm:h-32 bg-cover bg-center" style={{ backgroundImage: `url(${sensorImg2})` }}>
+                    <div className="h-full w-full bg-blue-400/40 ring-1 ring-blue-500/50 flex items-center justify-center">
+                      <div className="text-sm font-semibold">SENSOR - 2</div>
+                    </div>
+                  </div>
+                </div>
+                <div className="rounded-xl overflow-hidden border shadow-soft">
+                  <div className="h-28 sm:h-32 bg-cover bg-center" style={{ backgroundImage: `url(${sensorImg3})` }}>
+                    <div className="h-full w-full bg-blue-400/40 ring-1 ring-blue-500/50 flex items-center justify-center">
+                      <div className="text-sm font-semibold">SENSOR - 3</div>
+                    </div>
+                  </div>
+                </div>
+                <div className="rounded-xl overflow-hidden border shadow-soft">
+                  <div className="h-28 sm:h-32 bg-cover bg-center" style={{ backgroundImage: `url(${sensorImg4})` }}>
+                    <div className="h-full w-full bg-red-400/40 ring-1 ring-red-500/50 flex items-center justify-center">
+                      <div className="text-sm font-semibold">SENSOR - 4</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-4 flex flex-wrap items-center gap-6">
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-4 h-4 rounded-sm bg-blue-300 border"></span>
+                  <span className="text-sm">Irrigated Field</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-4 h-4 rounded-sm bg-red-300 border"></span>
+                  <span className="text-sm">Non‑Irrigated Field</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        
 </div>
       <Mobsms />
     <Chatbot />
